@@ -1,6 +1,6 @@
 name: CI Bench
 author: Nerivec
-description: Continuous benchmarking using Github actions (artifact-based)
+description: Continuous benchmarking using GitHub actions (artifact-based)
 branding:
   icon: cloud-lightning
   color: green

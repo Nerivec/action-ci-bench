@@ -1,11 +1,11 @@
-# Github Action: CI Bench
+# GitHub Action: CI Bench
 
-Continuous benchmarking using Github actions (artifact-based)
+Continuous benchmarking using GitHub actions (artifact-based)
 
 # Description
 
 > [!IMPORTANT]
-> This is of course dependent on the runner used by the Github workflow. Changes in the Github infrastructure and plenty of other factors may affect the results. Use wisely, and provide a way to re-run the benchmarks in case of abberant results.
+> This is of course dependent on the runner used by the GitHub workflow. Changes in the GitHub infrastructure and plenty of other factors may affect the results. Use wisely, and provide a way to re-run the benchmarks in case of abberant results.
 
 > [!TIP]
 > Don't forget to configure your benchmarks for "ideal" results (warmup, iterations, etc.). e.g. [Vitest](https://vitest.dev/api/#bench)
