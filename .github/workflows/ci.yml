@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: "package.json"
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Biome
+        run: npm run check:ci
+
+      - name: Check typing
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build

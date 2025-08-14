@@ -1,0 +1,28 @@
+name: CI Bench
+author: Nerivec
+description: Continuous benchmarking using Github actions (artifact-based)
+branding:
+  icon: cloud-lightning
+  color: green
+
+inputs:
+  token:
+    description: The GitHub token for authentication
+    required: true
+  compare-against:
+    description: Name of the branch to compare against
+    required: true
+    default: main
+  base-cmd:
+    description: Command that runs the baseline benchmark
+    required: true
+  compare-cmd:
+    description: Command that runs the compare benchmark
+    required: true
+  base-result:
+    description: Name of the file the base benchmark results will be in (should match that of `*-cmd`)
+    required: true
+
+runs:
+  using: node24
+  main: dist/index.js

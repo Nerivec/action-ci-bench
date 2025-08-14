@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "composite": true,
+        "target": "esnext",
+        "module": "NodeNext",
+        "moduleResolution": "nodenext",
+        "lib": ["ESNext"],
+        "rootDir": "src",
+        "baseUrl": ".",
+        "outDir": "./dist",
+        "newLine": "lf",
+        "declaration": true,
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "include": ["./src/**/*.ts"]
+}

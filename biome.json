@@ -1,0 +1,69 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
+    },
+    "files": {
+        "ignoreUnknown": false,
+        "includes": ["**", "!package.json", "!package-lock.json", "!dist"]
+    },
+    "formatter": {
+        "enabled": true,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineWidth": 150,
+        "lineEnding": "lf"
+    },
+    "assist": {
+        "actions": {
+            "source": {
+                "organizeImports": "on"
+            }
+        }
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "style": {
+                "noNonNullAssertion": "off",
+                "noParameterAssign": "off",
+                "useThrowNewError": "error",
+                "useThrowOnlyError": "error",
+                "useNamingConvention": "error",
+                "useAsConstAssertion": "error",
+                "useDefaultParameterLast": "error",
+                "useEnumInitializers": "error",
+                "useSelfClosingElements": "error",
+                "useSingleVarDeclarator": "error",
+                "noUnusedTemplateLiteral": "error",
+                "useNumberNamespace": "error",
+                "noInferrableTypes": "error",
+                "noUselessElse": "error"
+            },
+            "correctness": {
+                "noUnusedImports": "error",
+                "noUnusedVariables": {
+                    "level": "warn",
+                    "fix": "none",
+                    "options": {}
+                }
+            },
+            "performance": {
+                "noBarrelFile": "error",
+                "noReExportAll": "error"
+            },
+            "suspicious": {
+                "noConstEnum": "off",
+                "useAwait": "error"
+            }
+        }
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "double"
+        }
+    }
+}
