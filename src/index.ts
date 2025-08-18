@@ -49,7 +49,13 @@ async function run() {
                 page: 1,
             });
 
-            assert(workflowRuns.data.workflow_runs.length > 0, `No workflow run found for ${workflowFile} on branch ${compareAgainst}`);
+            if (workflowRuns.data.workflow_runs.length === 0) {
+                const output = `No workflow run found for ${workflowFile} on branch ${compareAgainst}`;
+                console.warn(output);
+                await summary.addHeading("CI Bench results").addQuote(output).write();
+
+                return;
+            }
 
             const workflowRun = workflowRuns.data.workflow_runs[0];
 
@@ -63,7 +69,13 @@ async function run() {
             });
             const matchArtifact = artifacts.data.artifacts.find((artifact) => artifact.name === ARTIFACT_NAME);
 
-            assert(matchArtifact, `No artifact found for ${workflowRun.url}`);
+            if (!matchArtifact) {
+                const output = `No artifact found for ${workflowRun.url}`;
+                console.warn(output);
+                await summary.addHeading("CI Bench results").addQuote(output).write();
+
+                return;
+            }
 
             console.log(`Downloading artifact ${matchArtifact.id} from workflow run ${workflowRun.id} on branch ${compareAgainst}`);
 
