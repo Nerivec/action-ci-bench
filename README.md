@@ -58,7 +58,6 @@ Originally intended for use with Vitest, but any compliant alternative should wo
 
 ```yaml
 permissions:
-  contents: write
   actions: read
   pull-requests: write
 ```
