@@ -25,7 +25,7 @@ Run a benchmark command (using [a spawned shell](https://nodejs.org/api/child_pr
 
 ### Pull request
 
-Run a "comparing" benchmark command, using the retrieved results from the latest run on the baseline branch. The compared output is written as a comment in the pull request (or updated if previous comment detected).
+Run a "comparing" benchmark command, using the retrieved results from the latest run on the baseline branch. The compared output is uploaded as an artifact "compare.md" (due to limitations with comments and forks - see https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#using-data-from-the-triggering-workflow for examples to create comments with `workflow_run` using the artifact).
 
 > [!TIP]
 > Configure the artifacts retention according to your project's needs (how often the baseline branch gets updated), else re-run a benchmark on the baseline branch to create a new artifact if the last run expired.

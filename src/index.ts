@@ -114,37 +114,12 @@ ${benchOutput}
 \`\`\`
 `;
 
-            console.log("Finding existing comment");
+            writeFileSync("compare.md", body, "utf8");
 
-            const existingComments = await octokit.rest.issues.listComments({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                // biome-ignore lint/style/useNamingConvention: API
-                issue_number: pullRequest.number,
-            });
-            const existingComment = existingComments.data.find((c) => c.body?.startsWith(commentStart));
+            const artifactClient = new DefaultArtifactClient();
+            const { id, size } = await artifactClient.uploadArtifact(ARTIFACT_NAME, ["compare.md"], ".");
 
-            if (existingComment) {
-                console.log(`Found existing comment ${existingComment.id}`);
-
-                await octokit.rest.issues.updateComment({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    // biome-ignore lint/style/useNamingConvention: API
-                    issue_number: pullRequest.number,
-                    // biome-ignore lint/style/useNamingConvention: API
-                    comment_id: existingComment.id,
-                    body,
-                });
-            } else {
-                await octokit.rest.issues.createComment({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    // biome-ignore lint/style/useNamingConvention: API
-                    issue_number: pullRequest.number,
-                    body,
-                });
-            }
+            console.log(`Uploaded artifact ${id} (${size} bytes)`);
 
             await summary.addHeading("CI Bench results").addCodeBlock(benchOutput).write();
         } catch (error) {
